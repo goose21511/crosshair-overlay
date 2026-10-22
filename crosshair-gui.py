@@ -1069,7 +1069,12 @@ class CrosshairSettingsWindow(Gtk.ApplicationWindow):
             return
         try:
             subprocess.Popen(
-                [sys.executable, str(daemon_path)],
+                [
+                    sys.executable,
+                    str(daemon_path),
+                    "--config", str(self.config_path),
+                    "--socket", str(self.socket_path),
+                ],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 start_new_session=True,
